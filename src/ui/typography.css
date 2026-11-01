@@ -1,0 +1,13 @@
+/* Shared type hierarchy for panel title, section headings and control labels. */
+#panel h2 {
+  font-size: var(--font-panel);
+  font-weight: 700;
+}
+#panel :is(.section-title, .list-title b) {
+  font-size: var(--font-heading);
+  font-weight: 650;
+}
+#panel :is(.field, .check, .preference-label label, .preference-row > label, .record-row, summary) {
+  font-size: var(--font-body);
+  line-height: 1.5;
+}

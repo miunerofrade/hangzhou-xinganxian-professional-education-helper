@@ -1,0 +1,145 @@
+/* Panel shell, viewport sizing and launcher base. */
+:host {
+  all: initial;
+  position: fixed;
+  right: 20px;
+  z-index: 2147483646;
+  font:
+    16px/1.6 -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "PingFang SC",
+    sans-serif;
+  color: #2f2f2f;
+  color-scheme: light;
+}
+#launcher {
+  touch-action: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-left: auto;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow:
+    0 2px 8px #29292912,
+    0 8px 28px #29292924;
+  color: #424242;
+}
+#panel,
+#panel:focus {
+  outline: none;
+}
+h2 {
+  font-weight: 650;
+}
+.panel-caption {
+  display: block;
+  color: #717171;
+  font-size: var(--font-body);
+  letter-spacing: 1.4px;
+  margin-top: 2px;
+}
+.body {
+  display: grid;
+}
+@media (forced-colors: active) {
+  #launcher,
+  #panel {
+    outline: 1px solid CanvasText;
+  }
+}
+@media (max-width: 380px) {
+  #panel {
+    padding: 16px;
+  }
+}
+@media (max-width: 380px) {
+  #panel {
+    padding: 16px;
+  }
+}
+:host {
+  bottom: 20px;
+  font-size: var(--font-body);
+  line-height: 1.5;
+}
+#panel {
+  padding: 16px 18px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 18px;
+  margin-bottom: 12px;
+}
+h2 {
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  margin: 0;
+  font-size: var(--font-heading);
+}
+.body {
+  gap: 12px;
+}
+@media (max-width: 380px) {
+  #panel {
+    padding: 14px;
+  }
+}
+#panel {
+  width: 420px;
+  height: min(82dvh, 760px);
+}
+#panel > header {
+  position: sticky;
+  top: -16px;
+  z-index: 3;
+  background: var(--surface);
+  padding: 10px 0;
+}
+@media (max-width: 460px) {
+  #panel {
+    width: calc(100vw - 24px);
+    height: 86dvh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #panel {
+    scroll-behavior: auto;
+  }
+}
+#panel {
+  position: fixed;
+  top: auto;
+  left: auto;
+  max-width: calc(100vw - 24px);
+  transform-origin: 0 0;
+  overscroll-behavior: contain;
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+  overflow: auto;
+  scrollbar-width: thin;
+  background: var(--surface);
+  border: 1px solid #e5e5e5;
+  box-shadow: var(--panel-shadow);
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 1px solid #e5e5e5;
+  border-radius: 20px;
+  max-height: calc(100dvh - 24px);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+#refresh-countdown {
+  font-size: var(--font-body);
+  line-height: 1.5;
+  color: #595959;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

@@ -1,0 +1,111 @@
+/* A shared right-hand column aligns numeric values, selectors and the HEX field. */
+:host {
+  --settings-value-width: 116px;
+}
+#panel .preference-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 40px;
+}
+#panel .preference-row > input[type="checkbox"] {
+  justify-self: end;
+}
+#panel .preference-label {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#panel .preference-label label {
+  min-width: 0;
+}
+#panel .preference-label .info-wrap {
+  flex: none;
+}
+#panel .field {
+  grid-template-columns: minmax(0, 1fr) var(--settings-value-width);
+  gap: 12px;
+}
+#panel .field.time {
+  grid-template-columns: minmax(0, 1fr);
+}
+#panel .field input {
+  width: 100%;
+  font-size: var(--font-body);
+  font-weight: 400;
+}
+#panel .appearance-picker {
+  width: var(--settings-value-width);
+}
+#panel .custom-color-row {
+  display: grid;
+  align-items: center;
+  margin-top: 8px;
+  grid-template-columns: minmax(0, 1fr) 44px var(--settings-value-width);
+  gap: 10px;
+}
+#panel #appearance-seed-hex {
+  font-size: var(--font-body);
+  font-weight: 400;
+}
+#panel .record-row {
+  gap: 12px;
+  padding: 10px 0;
+}
+#panel .record-row button {
+  flex: 0 0 64px;
+  width: 64px;
+  min-width: 64px;
+  height: 36px;
+  min-height: 36px;
+  padding: 8px 12px;
+  border-radius: 18px;
+  font-size: var(--font-body);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The seed picker stays native and accessible; the generated theme owns its surface. */
+#panel #appearance-seed-color {
+  appearance: auto;
+  width: 44px;
+  height: 38px;
+  min-height: 38px;
+  padding: 3px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--action-surface);
+  box-shadow: var(--relief-raised);
+  cursor: pointer;
+}
+#appearance-seed-color::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+#appearance-seed-color::-webkit-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+#appearance-seed-color::-moz-color-swatch {
+  border: 0;
+  border-radius: 6px;
+}
+#appearance-seed-hex {
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+#appearance-seed-error {
+  margin-top: 6px;
+  font-size: var(--font-body);
+}
+#appearance-seed-error:empty {
+  display: none;
+}
+
+#panel #appearance-seed-color:focus-visible {
+  outline: 2px solid var(--action-primary);
+  outline-offset: 3px;
+}

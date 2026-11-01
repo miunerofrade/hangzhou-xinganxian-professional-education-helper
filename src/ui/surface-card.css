@@ -1,0 +1,57 @@
+/* Large and compact cards share bevels, with size-appropriate outer shadows. */
+/* Shared shape, palette and press feedback. Business controls remain independent. */
+:host([data-neumorphic="true"]) #panel .surface-card {
+  min-width: 0;
+  border: 0;
+  border-radius: var(--card-radius);
+  background: var(--card-background, var(--section-surface));
+  --relief-material: var(--card-background, var(--section-surface));
+  box-shadow: var(--card-shadow, var(--relief-raised));
+  transition:
+    padding 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-radius 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 280ms ease-out,
+    box-shadow 90ms ease-out;
+}
+:host([data-neumorphic="true"]) #panel .surface-card[data-card-tone="accent"] {
+  --card-background: var(--accent-surface);
+}
+:host([data-neumorphic="true"]) #panel .surface-card[data-card-size="compact"] {
+  --card-shadow: var(--relief-raised);
+  border-radius: var(--compact-card-radius);
+  padding: 12px;
+  margin: 4px 4px 8px;
+}
+:host([data-neumorphic="true"]) #panel .surface-card.is-surface-pressed {
+  box-shadow: var(--relief-pressed);
+}
+@media (prefers-reduced-motion: reduce) {
+  :host([data-neumorphic="true"]) #panel .surface-card {
+    transition: none;
+  }
+}
+
+/* Depress the contents with the surface while the outer silhouette stays fixed. */
+:host([data-neumorphic="true"]) #panel .surface-card > * {
+  translate: 0 0;
+  transition: translate 80ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+:host([data-neumorphic="true"]) #panel .surface-card.is-surface-pressed > * {
+  translate: 0 var(--card-content-offset, 1.5px);
+}
+@media (prefers-reduced-motion: reduce) {
+  :host([data-neumorphic="true"]) #panel .surface-card > * {
+    transition: none;
+  }
+}
+
+/* Normal-mode current course: inset actions, with room for their lower shadow. */
+:host(:not([data-neumorphic="true"])) #panel .course.current {
+  border-radius: var(--compact-card-radius);
+  padding: 12px;
+  margin: 4px 4px 12px;
+  gap: 10px;
+}
+:host(:not([data-neumorphic="true"])) #panel .course.current .row-actions {
+  margin-bottom: 8px;
+}

@@ -1,0 +1,11 @@
+// ==UserScript==
+// @name         杭州学习新干线 · 单课程调度助手
+// @namespace    local.hz-learning-helper
+// @version      1.35.2
+// @description  课程调度与手动管理；同步平台已学记录后自动过滤。
+// @match        https://learning.hzrs.hangzhou.gov.cn/*
+// @match        https://xc-course.hzrs.hangzhou.gov.cn/*
+// @include      https://xc-course.hzrs.hangzhou.gov.cn:5443/*
+// @run-at       document-start
+// @grant        none
+// ==/UserScript==

@@ -1,0 +1,262 @@
+/* Appearance tokens map palette roles to components in one place. */
+:host([data-neumorphic="true"]) {
+  --surface: var(--theme-surface, #f2ebf7);
+  --section-surface: var(--theme-card, #fdf7ff);
+  --section-shadow: var(--theme-shadow, #d0cad5);
+  --panel-shadow:
+    inset 1px 1px 0 color-mix(in srgb, var(--surface) 55%, white), 0 6px 18px rgb(0 0 0 / 12%),
+    0 20px 44px -12px rgb(0 0 0 / 28%);
+  --action-primary-hover: var(--theme-primary-hover);
+  --accent-ink: var(--theme-on-primary-container);
+  --accent-surface: var(--theme-primary-container);
+  --action-ink: var(--theme-on-secondary-container);
+  --action-surface: var(--theme-secondary-container);
+  --text-muted: var(--theme-on-surface-variant);
+  --text-main: var(--theme-on-surface);
+  --action-primary-ink: var(--theme-on-primary);
+  --action-primary: var(--theme-primary);
+  --field-line: var(--theme-outline);
+  --select-surface: var(--action-surface);
+  --select-shadow: var(--card-shadow);
+  --select-ink: var(--action-ink);
+  --select-hover: var(--section-surface);
+  --select-hover-ink: var(--text-main);
+  --select-selected: var(--action-primary);
+  --select-selected-ink: var(--action-primary-ink);
+  --select-focus: var(--action-primary);
+  --primary-surface: var(--action-primary);
+  --primary-surface-hover: var(--action-primary-hover);
+  --primary-ink: var(--action-primary-ink);
+}
+:host([data-neumorphic="true"]) #panel {
+  border-color: transparent;
+}
+:host([data-neumorphic="true"]) .body {
+  gap: 20px;
+  padding: 6px 4px 12px;
+}
+:host([data-neumorphic="true"])
+  .body
+  > :is(
+    #controls,
+    .status-section,
+    .annual,
+    .preferences,
+    #dashboard:not(:empty),
+    #preview:not(:empty),
+    .log-section
+  ) {
+  min-width: 0;
+  padding: var(--card-padding);
+}
+:host([data-neumorphic="true"]) #controls:empty {
+  display: none;
+}
+@media (max-width: 380px) {
+  :host([data-neumorphic="true"])
+    .body
+    > :is(
+      #controls,
+      .status-section,
+      .annual,
+      .preferences,
+      #dashboard:not(:empty),
+      #preview:not(:empty),
+      .log-section
+    ) {
+    padding: 12px;
+  }
+}
+
+/* Current course uses the same raised shell and Material palette as other cards. */
+:host([data-neumorphic="true"])
+  #panel.player-panel
+  .body
+  > .status-section:has(#progress:not([hidden]):not(:empty)) {
+  --card-background: var(--accent-surface);
+}
+:host([data-neumorphic="true"])
+  #panel.player-panel.is-paused
+  .body
+  > .status-section:has(#progress:not([hidden]):not(:empty)) {
+  --card-background: var(--section-surface);
+}
+:host([data-neumorphic="true"]) #panel.player-panel #progress:not(:empty) {
+  background: transparent;
+  color: var(--accent-ink);
+  padding: 0;
+}
+:host([data-neumorphic="true"]) #panel.player-panel.is-paused #progress:not(:empty) {
+  color: var(--text-muted);
+}
+
+/* Google-generated color roles apply only to the optional appearance. */
+:host([data-neumorphic="true"]) {
+  --button-surface: var(--action-surface);
+  --button-surface-hover: color-mix(in srgb, var(--action-surface) 92%, var(--action-primary));
+  --button-surface-pressed: var(--action-surface);
+  color: var(--text-main);
+}
+:host([data-neumorphic="true"]) button:not(.primary):not(.info-trigger) {
+  color: var(--action-ink);
+}
+:host([data-neumorphic="true"]) button.info-trigger,
+:host([data-neumorphic="true"])
+  :is(
+    .section-title,
+    .list-title b,
+    .preference-label,
+    .preference-label label,
+    .course-meta,
+    .course-title,
+    .course-facts,
+    .ordinal,
+    .score,
+    .official-meta,
+    .official-meta b,
+    .annual-grid small,
+    .annual-grid > div > span,
+    .stat span,
+    .stat small,
+    .suffix,
+    summary,
+    .course-progress-head,
+    #refresh-countdown,
+    .auth-entry-label:not(.warning):not(.error),
+    .auth-entry-time,
+    .auth-entry-meta,
+    .auth-entry-level:not(.warning):not(.error)
+  ) {
+  color: var(--text-muted);
+}
+:host([data-neumorphic="true"]) input:not([type="checkbox"]),
+:host([data-neumorphic="true"]) select {
+  border-bottom-color: var(--field-line);
+}
+:host([data-neumorphic="true"]) input:not([type="checkbox"]):focus,
+:host([data-neumorphic="true"]) select:focus,
+:host([data-neumorphic="true"]) .select-wrap:focus-within select {
+  border-bottom-color: var(--action-primary);
+  box-shadow: 0 1px 0 var(--action-primary);
+}
+:host([data-neumorphic="true"]) :is(button, input, select, summary):focus-visible {
+  outline-color: var(--action-primary);
+}
+:host([data-neumorphic="true"]) input[type="checkbox"]:checked {
+  --switch-surface: var(--action-primary);
+  background: var(--action-primary);
+}
+:host([data-neumorphic="true"]) .progress-fill {
+  background: var(--action-primary);
+}
+:host([data-neumorphic="true"]) .progress-track {
+  background: var(--action-surface);
+}
+
+/* Cards and buttons share the same narrow bevel and short directional shadow. */
+:host([data-neumorphic="true"]) {
+  --relief-raised:
+    inset 1px 1px 0 rgb(255 255 255 / 85%),
+    inset -1px -1px 0 color-mix(in srgb, var(--section-shadow) 85%, transparent),
+    -1px -1px 2px rgb(255 255 255 / 75%), 3px 3px 3px -1px var(--section-shadow);
+  --relief-hover:
+    inset 1px 1px 0 rgb(255 255 255 / 90%), inset -1px -1px 0 var(--section-shadow),
+    -1px -1px 2px rgb(255 255 255 / 80%), 4px 4px 4px -1px var(--section-shadow);
+  --relief-pressed:
+    inset 2px 2px 3px var(--section-shadow), inset -1px -1px 2px rgb(255 255 255 / 90%),
+    0 0 0 0 transparent, 0 0 0 0 transparent;
+  --button-shadow: var(--relief-raised);
+  --button-shadow-hover: var(--relief-hover);
+  --button-shadow-pressed: var(--relief-pressed);
+  --primary-shadow: var(--relief-raised);
+  --primary-shadow-hover: var(--relief-hover);
+  --primary-shadow-pressed: var(--relief-pressed);
+}
+/* Explicit properties avoid animating menu motion or dynamic list contents. */
+#panel,
+#panel > header {
+  transition:
+    background-color 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 280ms ease-out;
+}
+.body {
+  transition:
+    gap 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    padding 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.body > :is(#controls, .status-section, .annual, .preferences, #dashboard, #preview, .log-section) {
+  transition:
+    padding 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-radius 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 280ms ease-out,
+    box-shadow 90ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  #panel,
+  #panel > header,
+  .body,
+  .body
+    > :is(#controls, .status-section, .annual, .preferences, #dashboard, #preview, .log-section) {
+    transition: none;
+  }
+}
+
+/* Help disclosures follow the active theme rather than a fixed white surface. */
+:host([data-neumorphic="true"]) .help {
+  background: var(--action-surface);
+  color: var(--action-ink);
+  border: 0;
+  border-radius: 12px;
+  box-shadow: var(--relief-raised);
+}
+
+/* The floating launcher belongs to the same Material surface family. */
+#launcher {
+  transition:
+    background-color 280ms ease-out,
+    color 280ms ease-out,
+    box-shadow 90ms ease-out;
+}
+:host([data-neumorphic="true"]) #launcher {
+  background: var(--action-surface);
+  color: var(--action-ink);
+  box-shadow: var(--relief-raised);
+}
+:host([data-neumorphic="true"]) #launcher:hover {
+  box-shadow: var(--relief-hover);
+}
+:host([data-neumorphic="true"]) #launcher:active {
+  box-shadow: var(--relief-pressed);
+}
+@media (prefers-reduced-motion: reduce) {
+  #launcher {
+    transition: none;
+  }
+}
+
+/* Current course text follows the accent surface contract. */
+:host([data-neumorphic="true"])
+  .course.current:not(.paused)
+  :is(.course-title, .course-meta, .course-facts, .ordinal, .score, .course-current-badge) {
+  color: var(--accent-ink);
+}
+:host([data-neumorphic="true"]) .course.current.paused .course-current-badge {
+  color: var(--text-muted);
+}
+
+/* Resolve pressed shading on each material, not on the pale host surface. */
+:host([data-neumorphic="true"]) :is(button:not(.info-trigger), .surface-card) {
+  --relief-material: var(--action-surface);
+  --relief-pressed:
+    inset 2px 2px 3px color-mix(in srgb, var(--relief-material) 70%, black),
+    inset -2px -2px 3px color-mix(in srgb, var(--relief-material) 75%, white), 0 0 0 0 transparent,
+    0 0 0 0 transparent;
+  --button-shadow-pressed: var(--relief-pressed);
+  --primary-shadow-pressed: var(--relief-pressed);
+}
+:host([data-neumorphic="true"]) button.primary {
+  --relief-material: var(--action-primary);
+}
+:host([data-neumorphic="true"]) button.primary:not(:disabled):hover {
+  --relief-material: var(--action-primary-hover);
+}

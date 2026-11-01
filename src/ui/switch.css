@@ -1,0 +1,69 @@
+/* Shared switch geometry and state: off is recessed; on is raised.
+   Skins only override the surface/highlight/lowlight variables. */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-block;
+  position: relative;
+  width: 44px;
+  min-width: 44px;
+  height: 26px;
+  margin: 0;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 0;
+  border-radius: 20px;
+  --switch-surface: #e2e2e2;
+  --switch-lowlight: color-mix(in srgb, var(--switch-surface) 70%, black);
+  --switch-highlight: color-mix(in srgb, var(--switch-surface) 65%, white);
+  --switch-recessed:
+    inset 2px 2px 3px var(--switch-lowlight), inset -2px -2px 3px var(--switch-highlight);
+  --switch-raised:
+    inset 1px 1px 0 var(--switch-highlight), inset -1px -1px 0 var(--switch-lowlight),
+    2px 3px 4px -1px rgb(0 0 0 / 24%);
+  background: var(--switch-surface);
+  box-shadow: var(--switch-recessed);
+  transition:
+    background-color 150ms ease-out,
+    box-shadow 150ms ease-out;
+}
+input[type="checkbox"]::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 3px;
+  top: 3px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow:
+    -1px -1px 2px rgb(255 255 255 / 70%),
+    2px 2px 4px rgb(0 0 0 / 18%);
+  transition: transform 150ms;
+}
+input[type="checkbox"]:checked {
+  --switch-surface: #606060;
+  box-shadow: var(--switch-raised);
+}
+input[type="checkbox"]:checked::before {
+  transform: translateX(18px);
+}
+@media (prefers-reduced-motion: reduce) {
+  input[type="checkbox"],
+  input[type="checkbox"]::before {
+    transition: none;
+  }
+}
+@media (forced-colors: active) {
+  input[type="checkbox"] {
+    appearance: auto;
+    -webkit-appearance: auto;
+    background: Canvas;
+    width: auto;
+    height: auto;
+  }
+  input[type="checkbox"]::before {
+    display: none;
+  }
+}

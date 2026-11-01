@@ -1,0 +1,37 @@
+/* All action tones share one state order: rest, hover, then pressed. */
+:host {
+  --primary-surface: #373737;
+  --primary-surface-hover: #4d4d4d;
+  --primary-ink: #fff;
+}
+#panel button.primary {
+  background: var(--primary-surface);
+  color: var(--primary-ink);
+  box-shadow: var(--primary-shadow);
+}
+#panel button.primary:not(:disabled):hover {
+  background: var(--primary-surface-hover);
+  box-shadow: var(--primary-shadow-hover);
+}
+#panel button:not(.primary):not(.info-trigger) {
+  background: var(--button-surface);
+  box-shadow: var(--button-shadow);
+}
+#panel button:not(.primary):not(.info-trigger):not(:disabled):hover {
+  background: var(--button-surface-hover);
+  box-shadow: var(--button-shadow-hover);
+}
+#panel button:not(.primary):not(.info-trigger):not(:disabled):active {
+  background: var(--button-surface-pressed);
+  box-shadow: var(--button-shadow-pressed);
+  transform: translateY(1px);
+}
+#panel button.primary:not(:disabled):active {
+  box-shadow: var(--primary-shadow-pressed);
+  transform: translateY(1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  #panel button:not(:disabled):active {
+    transform: none;
+  }
+}

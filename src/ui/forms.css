@@ -1,0 +1,139 @@
+/* Input and select base geometry; interactive states remain explicit. */
+input {
+  font: inherit;
+  color: inherit;
+}
+.label-row,
+.setting-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  justify-content: space-between;
+}
+input:not([type="checkbox"]) {
+  border: 0;
+  border-bottom: 1px solid #a3a3a3;
+  border-radius: 0;
+  background: transparent;
+  min-width: 0;
+  padding: 8px 2px;
+}
+input:not([type="checkbox"]):focus,
+select:focus {
+  background: transparent;
+  border-bottom-color: #111;
+  box-shadow: 0 1px 0 #111;
+  outline: none;
+}
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+.target-wrap {
+  position: relative;
+}
+.target-wrap input {
+  line-height: 1.4;
+  font-weight: 600;
+  width: 100%;
+  height: 46px;
+}
+.suffix {
+  position: absolute;
+  right: 12px;
+  top: 14px;
+  color: #737373;
+}
+.select-wrap {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+}
+.select-wrap > svg {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #737373;
+}
+.category-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+.category-row:has(#read-next[hidden]) {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+}
+.category-row button {
+  min-width: 104px;
+  justify-self: stretch;
+  padding: 8px 20px;
+  min-height: var(--field-height);
+  white-space: nowrap;
+  font-size: var(--font-body);
+  color: #656565;
+  border-radius: 8px;
+}
+input:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+.label-row label {
+  font-weight: 600;
+  font-size: var(--font-body);
+}
+input:not([type="checkbox"]) {
+  box-shadow: none;
+  min-height: var(--field-height);
+  font-size: var(--font-body);
+}
+select {
+  border: 0;
+  border-bottom: 1px solid #a3a3a3;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  min-width: 0;
+  padding: 8px 2px;
+  font: inherit;
+  color: inherit;
+  min-height: var(--field-height);
+  font-size: var(--font-body);
+}
+.select-wrap select {
+  width: 100%;
+
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 32px;
+  min-height: var(--field-height);
+  font-size: var(--font-body);
+}
+.target-wrap input {
+  padding: 5px 64px 5px 2px;
+  font-size: var(--font-stat);
+}
+.suffix {
+  font-size: var(--font-meta);
+}
+input:not([type="checkbox"]):focus-visible {
+  outline: none;
+  border-bottom-color: #111;
+  box-shadow: 0 1px 0 #111;
+}
+select:focus-visible {
+  outline-offset: 3px;
+  outline: none;
+  border-bottom-color: #111;
+  box-shadow: 0 1px 0 #111;
+}
+.select-wrap:focus-within select {
+  outline: none;
+  border-bottom-color: #111;
+  box-shadow: 0 1px 0 #111;
+}

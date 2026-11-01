@@ -1,0 +1,37 @@
+/* A fixed SVG marker avoids rotating a font glyph outside its line box. */
+#panel :is(.plan-disclosure, .log-disclosure, .auth-entry) > summary::before {
+  --log-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  content: "";
+  display: block;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--log-chevron) center / 16px 16px no-repeat;
+  mask: var(--log-chevron) center / 16px 16px no-repeat;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+#panel :is(.plan-disclosure, .log-disclosure, .auth-entry)[open] > summary::before {
+  transform: rotate(0);
+}
+@media (forced-colors: active) {
+  #panel :is(.plan-disclosure, .log-disclosure, .auth-entry) > summary::before {
+    background: CanvasText;
+  }
+}
+
+/* Section accordions share a closed header height and an open content gap. */
+#panel :is(.plan-disclosure, .log-disclosure) > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  margin: 0;
+}
+#panel :is(.plan-disclosure, .log-disclosure)[open] > summary {
+  margin-bottom: 8px;
+}
+#panel .plan-disclosure > summary > b {
+  flex: 1;
+}

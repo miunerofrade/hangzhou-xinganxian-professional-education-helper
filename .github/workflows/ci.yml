@@ -1,0 +1,29 @@
+name: 测试与构建
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: 格式、测试与构建
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取代码
+        uses: actions/checkout@v7
+      - name: 配置 Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: 安装依赖
+        run: npm ci
+      - name: 检查格式
+        run: npm run format:check
+      - name: 运行测试并构建
+        run: npm test
+      - name: 检查安装文件是否为最新
+        run: git diff --exit-code -- dist/hz-learning-helper.user.js

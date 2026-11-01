@@ -1,0 +1,35 @@
+/* One depth scale: small tools < regular controls < primary actions < large sections. */
+:host([data-neumorphic="true"]) {
+  --elevation-small:
+    inset 1px 1px 0 rgb(255 255 255 / 75%),
+    inset -1px -1px 0 color-mix(in srgb, var(--section-shadow) 65%, transparent),
+    2px 3px 4px -2px var(--section-shadow);
+  --elevation-control:
+    inset 1px 1px 0 rgb(255 255 255 / 85%),
+    inset -1px -1px 0 color-mix(in srgb, var(--section-shadow) 75%, transparent),
+    -1px -1px 2px rgb(255 255 255 / 70%), 3px 4px 6px -2px var(--section-shadow);
+  --elevation-primary:
+    inset 1px 1px 0 rgb(255 255 255 / 90%), inset -1px -1px 0 var(--section-shadow),
+    -2px -2px 3px rgb(255 255 255 / 75%), 5px 7px 10px -3px var(--section-shadow);
+  --elevation-section:
+    inset 1px 1px 0 rgb(255 255 255 / 85%),
+    inset -1px -1px 0 color-mix(in srgb, var(--section-shadow) 85%, transparent),
+    -3px -3px 6px rgb(255 255 255 / 70%), 8px 10px 16px -5px var(--section-shadow);
+  --relief-raised: var(--elevation-control);
+  --button-shadow: var(--elevation-control);
+  --primary-shadow: var(--elevation-primary);
+  --primary-shadow-hover: var(--elevation-section);
+  --card-shadow: var(--elevation-section);
+}
+:host([data-neumorphic="true"]) :is(.icon-button, .icon-actions > button, #refresh-annual) {
+  --button-shadow: var(--elevation-small);
+  --button-shadow-hover: var(--elevation-control);
+}
+:host([data-neumorphic="true"])
+  #panel
+  .surface-card[data-card-importance="high"][data-card-size="compact"] {
+  --card-shadow: var(--elevation-primary);
+}
+:host([data-neumorphic="true"]) #panel .surface-card:not([data-card-size="compact"]) {
+  --card-content-offset: 2px;
+}

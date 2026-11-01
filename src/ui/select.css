@@ -1,0 +1,78 @@
+/* One native-select enhancement for every dropdown; unsupported browsers stay native. */
+:host {
+  --select-surface: #f0f0f0;
+  --select-shadow: 0 2px 4px rgb(0 0 0 / 16%), 6px 10px 18px -5px rgb(0 0 0 / 30%);
+  --select-ink: #2f2f2f;
+  --select-hover: #ededed;
+  --select-hover-ink: #171717;
+  --select-selected: #373737;
+  --select-selected-ink: #fff;
+  --select-focus: #373737;
+}
+@supports (appearance: base-select) {
+  .select-wrap select,
+  .select-wrap select::picker(select) {
+    appearance: base-select;
+  }
+  .select-wrap select::picker-icon {
+    display: none;
+  }
+  .select-wrap select::picker(select) {
+    border: 0;
+    border-radius: 16px;
+    padding: 6px;
+    margin-top: 8px;
+    background: var(--select-surface);
+    color: var(--select-ink);
+    box-shadow: var(--select-shadow);
+    font: inherit;
+  }
+  .select-wrap option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 40px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    background: var(--select-surface);
+    color: var(--select-ink);
+  }
+  .select-wrap option:hover:not(:checked),
+  .select-wrap option:focus:not(:checked) {
+    background: var(--select-hover);
+    color: var(--select-hover-ink);
+  }
+  .select-wrap option:checked {
+    background: var(--select-selected);
+    color: var(--select-selected-ink);
+    font-weight: 600;
+  }
+  .select-wrap option::checkmark {
+    color: currentColor;
+    opacity: 1;
+  }
+  .select-wrap option:focus-visible {
+    outline: 2px solid var(--select-focus);
+    outline-offset: -3px;
+  }
+  .select-wrap option:checked:focus-visible {
+    outline-color: var(--select-selected-ink);
+  }
+}
+@media (forced-colors: active) {
+  .select-wrap select::picker(select) {
+    outline: 1px solid CanvasText;
+  }
+  :host,
+  :host([data-neumorphic="true"]) {
+    --select-surface: Canvas;
+    --select-shadow: none;
+    --select-ink: CanvasText;
+    --select-hover: Canvas;
+    --select-hover-ink: CanvasText;
+    --select-selected: Highlight;
+    --select-selected-ink: HighlightText;
+    --select-focus: CanvasText;
+  }
+}

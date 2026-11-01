@@ -1,0 +1,112 @@
+/* Status and course-progress layout. */
+.status-section {
+  display: grid;
+  gap: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.status-section:not(
+  :has(
+    #status-line:not([hidden]),
+    #center-progress:not([hidden]),
+    #center-status:not([hidden]):not(:empty),
+    #learned-summary:not(:empty),
+    #history-progress:not(:empty),
+    #progress:not(:empty)
+  )
+) {
+  display: none;
+}
+
+#progress {
+  font-weight: 500;
+}
+#center-status:empty,
+#learned-summary:empty,
+#progress:empty {
+  display: none;
+}
+#progress:not(:empty) {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.player-panel #progress:not(:empty) {
+  border-radius: var(--compact-card-radius);
+  background: #edf7ef;
+  color: #31563b;
+  padding: 10px 12px;
+}
+.player-panel.is-paused #progress:not(:empty) {
+  background: #f3f3f3;
+  color: #444;
+}
+#state,
+#center-status,
+#learned-summary,
+#progress {
+  font-size: var(--font-body);
+}
+#history-progress {
+  font-size: var(--font-body);
+}
+#history-progress:empty {
+  display: none;
+}
+#state,
+#center-status,
+#learned-summary {
+  line-height: 1.5;
+  white-space: pre-line;
+  color: #626262;
+  margin: 0;
+}
+#history-progress {
+  line-height: 1.5;
+  white-space: pre-line;
+  margin: 0;
+}
+#progress {
+  line-height: 1.5;
+  white-space: pre-line;
+  color: #444444;
+  margin: 0;
+}
+#center-progress {
+  width: 100%;
+  margin: 0;
+}
+.course-progress-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+  color: #595959;
+  font-size: var(--font-body);
+  line-height: 1.5;
+}
+#center-check-time {
+  margin-left: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.course-progress-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  min-width: 0;
+  margin-right: auto;
+}
+#check-course-progress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}

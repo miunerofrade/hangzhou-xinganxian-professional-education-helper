@@ -1,0 +1,36 @@
+/* Current-course and playback-page actions share the same two-column component. */
+#panel .pill-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  min-width: 0;
+  gap: 12px;
+  padding: 0;
+  margin-right: 0;
+}
+#panel .pill-actions > button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  min-height: 42px;
+  flex-basis: auto;
+  padding: 9px 12px;
+  border-radius: var(--button-radius);
+  line-height: 1;
+}
+#panel .pill-actions > button svg,
+#panel .pill-actions > button .action-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex: 0 0 var(--icon-size);
+}
+#panel .pill-actions > button .action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

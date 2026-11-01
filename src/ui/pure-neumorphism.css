@@ -1,0 +1,95 @@
+/* Experimental same-material skin. A single surface overrides semantic roles. */
+:host([data-pure-neumorphic="true"]) {
+  --section-surface: var(--surface);
+  --accent-surface: var(--surface);
+  --accent-ink: var(--text-main);
+  --action-surface: var(--surface);
+  --action-ink: var(--text-main);
+  --action-primary: var(--text-main);
+  --action-primary-hover: var(--text-main);
+  --primary-surface: var(--surface);
+  --primary-surface-hover: var(--surface);
+  --primary-ink: var(--text-main);
+  --button-surface: var(--surface);
+  --button-surface-hover: var(--surface);
+  --button-surface-pressed: var(--surface);
+  --select-surface: var(--surface);
+  --select-ink: var(--text-main);
+  --select-hover: var(--surface);
+  --select-hover-ink: var(--text-main);
+  --select-selected: var(--surface);
+  --select-selected-ink: var(--text-main);
+  --select-focus: var(--text-main);
+}
+:host([data-pure-neumorphic="true"]) #panel button,
+:host([data-pure-neumorphic="true"]) #panel button.primary:not(:disabled):hover,
+:host([data-pure-neumorphic="true"]) #panel .surface-card {
+  --relief-material: var(--surface);
+}
+:host([data-pure-neumorphic="true"]) #panel input[type="checkbox"],
+:host([data-pure-neumorphic="true"]) #panel input[type="checkbox"]:checked {
+  --switch-surface: var(--surface);
+  --switch-lowlight: var(--section-shadow);
+  --switch-highlight: rgb(255 255 255 / 85%);
+  background: var(--surface);
+}
+:host([data-pure-neumorphic="true"]) #panel input[type="checkbox"]::before {
+  background: var(--surface);
+  box-shadow:
+    -1px -1px 2px rgb(255 255 255 / 85%),
+    2px 2px 3px var(--section-shadow);
+}
+:host([data-pure-neumorphic="true"]) #panel input:not([type="checkbox"]):not([type="color"]),
+:host([data-pure-neumorphic="true"]) #panel select {
+  --relief-material: var(--surface);
+  border: 0;
+  border-radius: 10px;
+  padding-inline: 10px;
+  background: var(--surface);
+  box-shadow:
+    inset 2px 2px 3px var(--section-shadow),
+    inset -2px -2px 3px rgb(255 255 255 / 85%);
+}
+:host([data-pure-neumorphic="true"]) #panel .target-wrap input {
+  padding-right: 64px;
+}
+:host([data-pure-neumorphic="true"]) #panel .select-wrap select {
+  padding-right: 32px;
+}
+:host([data-pure-neumorphic="true"]) #panel > header {
+  background: var(--surface);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+:host([data-pure-neumorphic="true"]) #panel input::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+:host([data-pure-neumorphic="true"]) #panel :is(button, input, select, summary):focus-visible,
+:host([data-pure-neumorphic="true"]) #launcher:focus-visible {
+  outline: 2px solid var(--text-main);
+  outline-offset: 3px;
+}
+@supports (appearance: base-select) {
+  :host([data-pure-neumorphic="true"]) .select-wrap option:hover:not(:checked) {
+    box-shadow: var(--relief-raised);
+  }
+  :host([data-pure-neumorphic="true"]) .select-wrap option:checked {
+    box-shadow: var(--relief-pressed);
+  }
+}
+
+@media (forced-colors: active) {
+  :host([data-pure-neumorphic="true"]) {
+    --surface: Canvas;
+    --text-main: CanvasText;
+    --field-line: CanvasText;
+    --action-primary: Highlight;
+    --action-primary-ink: HighlightText;
+    --select-surface: Canvas;
+    --select-ink: CanvasText;
+    --select-selected: Highlight;
+    --select-selected-ink: HighlightText;
+    --select-focus: CanvasText;
+  }
+}

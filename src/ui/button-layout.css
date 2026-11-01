@@ -1,0 +1,260 @@
+/* Action layout, icon geometry and base interaction states. */
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: #6e6e6e;
+}
+.icon-button:hover {
+  background: #f4f4f4;
+}
+.actions {
+  display: grid;
+  gap: 8px;
+}
+.actions > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font-weight: 550;
+  background: #f2f2f2;
+  color: #444444;
+}
+.worker-actions > button {
+  display: flex;
+  gap: 7px;
+  border-radius: 9px;
+  padding: 8px 10px;
+  font-weight: 550;
+  background: #f2f2f2;
+  color: #444444;
+}
+.worker-actions {
+  display: grid;
+  gap: 8px;
+}
+.quiet-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 0;
+  background: transparent;
+  border-radius: 4px;
+}
+.quiet-action:hover {
+  color: #4e4e4e;
+}
+.quiet-action:last-child:hover {
+  color: #585858;
+}
+.action-icon {
+  display: inline-flex;
+}
+.refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  padding: 0 3px;
+}
+.refresh:hover {
+  color: #4b4b4b;
+}
+.reset:hover {
+  color: #494949;
+}
+.icon-button {
+  min-width: 32px;
+  min-height: 32px;
+}
+.quiet-action,
+.refresh {
+  color: #595959;
+}
+button:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+.actions > button,
+.worker-actions > button {
+  font-size: var(--font-body);
+}
+.quiet-action,
+.reset,
+.refresh {
+  font-size: var(--font-meta);
+}
+.actions > button {
+  min-height: var(--field-height);
+}
+.worker-actions > button {
+  align-items: center;
+  justify-content: center;
+  min-height: var(--field-height);
+}
+.actions {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) 38px;
+}
+.actions > .icon-button {
+  padding: 0;
+  width: 38px;
+}
+.quiet-action {
+  min-height: 30px;
+}
+.reset {
+  width: fit-content;
+
+  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--field-height);
+  padding: 8px 14px;
+  border: 1px solid #b8b8b8;
+  background: #f5f5f5;
+  border-radius: 10px;
+  color: #333;
+}
+.reset:not(:disabled):hover {
+  background: #e9e9e9;
+  border-color: #888;
+}
+.worker-actions {
+  grid-template-columns: 1fr;
+}
+#scheduler-actions {
+  display: flex;
+  gap: 8px;
+}
+#scheduler-actions > #plan {
+  min-width: 0;
+  flex-basis: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#scheduler-actions > #start {
+  flex-basis: 0;
+}
+#scheduler-actions > #plan {
+  flex-grow: 1;
+  transition:
+    flex-grow 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    padding 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    margin 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 180ms ease-out;
+}
+#scheduler-actions > #start {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-grow: 1.15;
+}
+#scheduler-actions.has-started > #plan {
+  flex-grow: 0;
+  padding-inline: 0;
+  margin-right: -8px;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #scheduler-actions > #plan {
+    transition: none;
+  }
+}
+.worker-actions > .playback-toggle {
+  border-radius: 24px;
+  min-height: 44px;
+  gap: 10px;
+}
+.playback-toggle svg,
+#start svg {
+  flex-shrink: 0;
+}
+button:not(#launcher) {
+  border: 0;
+  border-radius: var(--button-radius);
+}
+.icon-actions {
+  display: grid;
+  grid-template-columns: repeat(2, var(--icon-button-size));
+  justify-content: end;
+  gap: var(--action-gap);
+  margin-right: var(--action-shadow-gutter);
+}
+button:not(#launcher):not(.info-trigger) {
+  transition:
+    box-shadow 90ms ease-out,
+    background-color 160ms ease-out,
+    transform 80ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  button:not(#launcher):not(.info-trigger) {
+    transition: none;
+  }
+}
+
+:is(.icon-button, .info-trigger, .icon-actions > button, #refresh-annual) {
+  display: inline-grid;
+  place-items: center;
+  width: var(--icon-button-size);
+  height: var(--icon-button-size);
+  min-width: var(--icon-button-size);
+  min-height: var(--icon-button-size);
+  padding: 0;
+  flex: 0 0 var(--icon-button-size);
+}
+:is(.icon-button, .info-trigger, .icon-actions > button, #refresh-annual) > svg,
+:is(.icon-button, .info-trigger, .icon-actions > button, #refresh-annual) .action-icon > svg {
+  display: block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+/* A single centered flex cell for every circular control, including SVG wrappers. */
+:is(.icon-button, .info-trigger, .icon-actions > button, #refresh-annual) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0;
+  padding: 0;
+  line-height: 0;
+}
+.icon-actions > button .action-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+:is(.icon-button, .info-trigger, .icon-actions > button, #refresh-annual) svg {
+  flex: 0 0 var(--icon-size);
+  margin: 0;
+  vertical-align: middle;
+}
+
+:is(.icon-button, .icon-actions > button, #refresh-annual) > svg,
+.icon-actions > button .action-icon > svg {
+  transform: translate(0.5px, 0.5px);
+}

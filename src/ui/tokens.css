@@ -1,0 +1,38 @@
+/* Shared normal-mode palette, dimensions and type scale. Theme overrides are separate. */
+:host {
+  --font-panel: 18px;
+  --font-body: 14px;
+  --font-meta: 12px;
+  --font-heading: 16px;
+  --font-stat: 24px;
+  --card-radius: 16px;
+  --compact-card-radius: 12px;
+  --card-padding: 16px;
+  --field-height: 38px;
+  --surface: #fff;
+  --panel-shadow: 0 6px 18px rgb(0 0 0 / 12%), 0 20px 44px -12px rgb(0 0 0 / 28%);
+  --button-radius: 24px;
+  --icon-button-size: 32px;
+  --icon-size: 16px;
+  --action-gap: 12px;
+  --action-shadow-gutter: 12px;
+  --primary-shadow:
+    inset 2px 2px 3px rgb(255 255 255 / 20%), inset -2px -2px 3px rgb(0 0 0 / 20%),
+    4px 6px 10px -5px rgb(0 0 0 / 34%);
+  --button-surface: #fff;
+  --button-surface-hover: #fafafa;
+  --button-surface-pressed: #fafafa;
+  --button-shadow:
+    inset 1px 1px 1px rgb(255 255 255 / 95%), inset -1px -1px 2px rgb(0 0 0 / 4%),
+    5px 7px 10px -5px rgb(0 0 0 / 26%);
+  --button-shadow-hover:
+    inset 1px 1px 2px rgb(255 255 255 / 100%), 6px 8px 12px -6px rgb(0 0 0 / 32%);
+  --button-shadow-pressed:
+    inset 2px 2px 4px rgb(0 0 0 / 14%), inset -2px -2px 4px rgb(255 255 255 / 90%);
+  --primary-shadow-hover:
+    inset 2px 2px 3px rgb(255 255 255 / 25%), inset -2px -2px 3px rgb(0 0 0 / 22%),
+    5px 7px 12px -5px rgb(0 0 0 / 38%);
+  --primary-shadow-pressed:
+    inset 3px 3px 6px rgb(0 0 0 / 35%), inset -1px -1px 2px rgb(255 255 255 / 14%),
+    1px 2px 4px -2px rgb(0 0 0 / 20%);
+}

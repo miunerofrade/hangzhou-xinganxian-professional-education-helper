@@ -1,0 +1,74 @@
+/* Shared resets and disclosure semantics. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+svg {
+  display: block;
+  flex: none;
+}
+p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+#controls {
+  display: grid;
+  gap: 10px;
+}
+.section-head,
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.section-title {
+  font-weight: 600;
+}
+.section-head {
+  justify-content: space-between;
+
+  min-height: 24px;
+}
+details {
+  margin-top: 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+summary::before {
+  content: "›";
+  font-size: var(--font-heading);
+  line-height: 1;
+  transition: transform 0.12s;
+}
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  summary::before {
+    transition: none;
+  }
+}
+summary:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 3px;
+}
+.section-title {
+  color: #595959;
+
+  font-size: var(--font-body);
+}
+summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 29px;
+  color: #717171;
+  cursor: pointer;
+  list-style: none;
+  font-size: var(--font-meta);
+}

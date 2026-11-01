@@ -1,0 +1,150 @@
+/* Course rows, list scrolling and metadata base. */
+.row-actions {
+  grid-column: 1 / -1;
+  margin-bottom: var(--action-shadow-gutter);
+}
+.row-actions button {
+  display: inline-flex;
+}
+#preview:not(:empty) {
+  border-top: 1px solid #ebebeb;
+  padding-top: 12px;
+}
+.list-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  justify-content: space-between;
+}
+.course-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-height: min(340px, 46dvh);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+.course {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+.course:last-child {
+  border-bottom: 0;
+}
+.ordinal {
+  font-variant-numeric: tabular-nums;
+  padding-top: 3px;
+}
+.course-title {
+  color: #474747;
+  line-height: 1.6;
+  -webkit-box-orient: vertical;
+}
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.score {
+  white-space: nowrap;
+}
+.empty {
+  padding: 10px 0;
+}
+#preview:empty {
+  display: none;
+}
+.course.current {
+  border-bottom: 0;
+  background: #edf7ef;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.course.current.paused {
+  background: transparent;
+}
+.course-current-badge {
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 4px;
+
+  display: block;
+  color: #31563b;
+}
+.course-current-badge::before {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #6e6e6e;
+
+  content: "";
+  display: none;
+}
+.course-title {
+  display: block;
+}
+.course-content {
+  min-width: 0;
+}
+.course-meta {
+  gap: 4px 12px;
+}
+.course-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+.score,
+.course-meta,
+.ordinal,
+.empty {
+  color: #595959;
+}
+.course-title {
+  overflow: visible;
+  -webkit-line-clamp: unset;
+  overflow-wrap: anywhere;
+  font-size: var(--font-body);
+}
+.list-title b {
+  font-weight: 600;
+  color: #737373;
+  font-size: var(--font-body);
+}
+.course-meta,
+.ordinal,
+.score,
+.row-actions button,
+.empty {
+  font-size: var(--font-meta);
+}
+.row-actions button {
+  flex-direction: row-reverse;
+  gap: 4px;
+  min-height: 30px;
+}
+.course {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.course-current-badge {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: var(--font-meta);
+}
+.course-name {
+  line-height: 1.5;
+}
+.course-meta {
+  justify-content: flex-start;
+  line-height: 1.5;
+}
