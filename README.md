@@ -34,6 +34,8 @@ npm test
 npm run build
 ```
 
+开发依赖通过 npm overrides 暂时将 `minimatch` 固定到修复版 11.0.1；ESLint 更新依赖范围后可再检查并移除覆盖。
+
 源码位于 `src/`，构建后的安装文件位于 `dist/hz-learning-helper.user.js`。`npm run format:check` 检查代码格式；`node preview.mjs` 生成独立界面预览。
 
 ## 许可证与致谢
