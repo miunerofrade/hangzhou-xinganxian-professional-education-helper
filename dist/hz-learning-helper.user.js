@@ -1,8 +1,12 @@
 // ==UserScript==
 // @name         杭州学习新干线 · 单课程调度助手
 // @namespace    local.hz-learning-helper
-// @version      1.35.3
-// @description  课程调度与手动管理；同步平台已学记录后自动过滤。
+// @version      1.35.4
+// @description  面向杭州专业技术人员学习新干线，支持课程计划、自动播放、进度核对和学时查看。
+// @license      MIT
+// @author       miunerofrade
+// @homepageURL  https://github.com/miunerofrade/hangzhou-xinganxian-professional-education-helper
+// @supportURL   https://github.com/miunerofrade/hangzhou-xinganxian-professional-education-helper/issues
 // @match        https://learning.hzrs.hangzhou.gov.cn/*
 // @match        https://xc-course.hzrs.hangzhou.gov.cn/*
 // @include      https://xc-course.hzrs.hangzhou.gov.cn:5443/*
@@ -12936,6 +12940,11 @@ ${row.detail}${
     else mount();
   }
 })();
+
+// 内嵌库：Material Color Utilities 0.4.0
+// 来源：https://github.com/material-foundation/material-color-utilities/tree/main/typescript
+// 上游为含相对依赖的 ES 模块，不能直接通过传统用户脚本的外部加载指令执行；构建时以非压缩形式打包。
+// 图标来源：https://github.com/lucide-icons/lucide（部分图标源自 Feather）
 
 // 本项目（MIT）
 // MIT License

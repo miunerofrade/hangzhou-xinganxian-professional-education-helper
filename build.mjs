@@ -30,6 +30,18 @@ export async function bundle({ testing = false } = {}) {
     ["Material Color Utilities（Apache-2.0）", "licenses/Material-Color-Utilities-Apache-2.0.txt"],
     ["Lucide 与 Feather 图标（ISC / MIT）", "licenses/Lucide-ISC-and-Feather-MIT.txt"],
   ];
+  const materialPackage = JSON.parse(
+    await readFile(
+      path.join(root, "node_modules/@material/material-color-utilities/package.json"),
+      "utf8",
+    ),
+  );
+  const sourceNotice = [
+    `// 内嵌库：Material Color Utilities ${materialPackage.version}`,
+    "// 来源：https://github.com/material-foundation/material-color-utilities/tree/main/typescript",
+    "// 上游为含相对依赖的 ES 模块，不能直接通过传统用户脚本的外部加载指令执行；构建时以非压缩形式打包。",
+    "// 图标来源：https://github.com/lucide-icons/lucide（部分图标源自 Feather）",
+  ].join("\n");
   const notices = await Promise.all(
     licenseFiles.map(async ([label, file]) => {
       const text = await readFile(path.join(root, file), "utf8");
@@ -42,7 +54,7 @@ export async function bundle({ testing = false } = {}) {
       ].join("\n");
     }),
   );
-  return `${metadata}\n${javascript}\n${notices.join("\n\n")}\n`;
+  return `${metadata}\n${javascript}\n${sourceNotice}\n\n${notices.join("\n\n")}\n`;
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const output = await bundle();
