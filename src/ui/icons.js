@@ -1,4 +1,4 @@
-// Selected Lucide SVG paths, ISC license: https://lucide.dev/license
+// Lucide (ISC) and Feather-derived icons (MIT); see licenses/Lucide-ISC-and-Feather-MIT.txt.
 const paths = {
   layers: '<path d="m12 2 10 5-10 5L2 7l10-5Z"/><path d="m2 12 10 5 10-5M2 17l10 5 10-5"/>',
   check: '<path d="m20 6-11 11-5-5"/>',

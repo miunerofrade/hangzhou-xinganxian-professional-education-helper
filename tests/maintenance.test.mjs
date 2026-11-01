@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
@@ -162,4 +163,23 @@ test("settings use schema defaults and retain validation boundaries and plan com
   assert.equal(samePlanSettings({ ...settings, target: 20 }, settings), false);
   for (const value of [5, 15, 240]) assert.equal(validRefreshMinutes(value), true);
   for (const value of [NaN, 4, 241]) assert.equal(validRefreshMinutes(value), false);
+});
+
+test("single-file distribution contains the project and bundled third-party license texts", () => {
+  const output = readFileSync(
+    new URL("../dist/hz-learning-helper.user.js", import.meta.url),
+    "utf8",
+  );
+  for (const file of [
+    "../LICENSE",
+    "../licenses/Material-Color-Utilities-Apache-2.0.txt",
+    "../licenses/Lucide-ISC-and-Feather-MIT.txt",
+  ]) {
+    const license = readFileSync(new URL(file, import.meta.url), "utf8").trimEnd();
+    const commented = license
+      .split("\n")
+      .map((line) => (line.trimEnd() ? `// ${line.trimEnd()}` : "//"))
+      .join("\n");
+    assert.ok(output.includes(commented), `${file} is included in the distributed script`);
+  }
 });

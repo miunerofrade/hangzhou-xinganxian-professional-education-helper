@@ -13,7 +13,7 @@
 ## 安装
 
 1. 在浏览器中安装 [Tampermonkey](https://www.tampermonkey.net/)。
-2. 打开仓库内的 [安装脚本](dist/hz-learning-helper.user.js)，点击 GitHub 文件页面的 **Raw**，按 Tampermonkey 提示安装。
+2. 打开 [最新版本安装脚本](https://github.com/miunerofrade/hangzhou-xinganxian-professional-education-helper/releases/latest/download/hz-learning-helper.user.js)，按 Tampermonkey 提示安装。
 3. 登录[杭州学习新干线](https://learning.hzrs.hangzhou.gov.cn/)，打开页面侧边的小球，设置学习目标并查找课程。
 
 脚本为单文件，安装时无需单独下载源码模块。更新时重新安装新版本并刷新平台页面即可。
@@ -40,4 +40,4 @@ npm run build
 
 ## 许可证与致谢
 
-本项目采用 [MIT 许可证](LICENSE)。配色功能使用 Google 的 [Material Color Utilities](https://github.com/material-foundation/material-color-utilities)（Apache-2.0），部分图标使用 [Lucide](https://lucide.dev/)（ISC）；第三方代码保留其原有许可声明。
+本项目采用 [MIT 许可证](LICENSE)。配色功能使用 Google 的 [Material Color Utilities](https://github.com/material-foundation/material-color-utilities)（Apache-2.0），部分图标使用 [Lucide](https://lucide.dev/)（ISC，其中部分源自 Feather，采用 MIT）；[第三方许可证](licenses/)及单文件脚本末尾保留完整许可声明。
