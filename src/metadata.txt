@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         杭州学习新干线 · 单课程调度助手
+// @name         杭州学习新干线学习助手
 // @namespace    local.hz-learning-helper
-// @version      1.35.4
+// @version      1.35.5
 // @description  面向杭州专业技术人员学习新干线，支持课程计划、自动播放、进度核对和学时查看。
 // @license      MIT
 // @author       miunerofrade

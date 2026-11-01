@@ -1,6 +1,6 @@
 {
   "name": "hz-learning-helper",
-  "version": "1.35.4",
+  "version": "1.35.5",
   "scripts": {
     "build": "node build.mjs",
     "test": "npm run lint && npm run build && node test.mjs && node --test tests/*.test.mjs",
